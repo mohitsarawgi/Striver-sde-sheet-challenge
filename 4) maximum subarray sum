@@ -1,0 +1,23 @@
+// kadanes algorithm
+
+//t.c = o(n)
+//s.c = o(1)
+
+#include <bits/stdc++.h> 
+long long maxSubarraySum(int arr[], int n)
+{
+   long long int maxi = INT_MIN;
+    long long int sum = 0;
+
+    for(long long int i = 0;i<n;i++){
+        sum += arr[i];
+
+         if(sum <0){
+            sum = 0;   
+        }   
+
+         maxi = max(sum , maxi);
+  
+    }
+  return maxi;
+}
