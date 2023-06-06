@@ -1,0 +1,32 @@
+bool searchMatrix(vector<vector<int>>& mat, int target) {
+   
+      int row = mat.size();
+      int col = mat[0].size();
+      int start = 0;
+      int end = row*col - 1;
+      int mid = start + (end - start)/2;
+
+
+      while(start<=end){
+      
+        int mid_element = mat[mid/col][mid%col];
+       
+        if(mid_element==target){
+            return true;
+        }
+
+        else if(mid_element<target){
+            start = mid+1;
+        }
+        else{
+            end = mid - 1;
+        }
+
+        mid = start + (end-start)/2;
+      }
+
+      return false;  
+    
+}
+
+ // int mid_element = mat[mid/col][mid%col];   ye samajna hai
