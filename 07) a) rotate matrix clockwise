@@ -1,0 +1,36 @@
+//need revision
+
+//T.c = O(n*m)
+//s.c = O(1)
+
+#include <bits/stdc++.h>
+
+void rotateMatrix(vector<vector<int>> &matrix, int n, int m)
+{
+     int top = 0 , bot = n-1 , left = 0 , right = m-1;
+
+     while(top<bot && left<right){
+
+          int temp = matrix[left][top];
+
+         for(int i = top ;i<bot;i++){
+             matrix[i][left] = matrix[i+1][left];
+         }
+
+         for(int i = left ;i<right;i++){
+             matrix[bot][i] = matrix[bot][i+1]; 
+         }
+
+         for(int i = bot;i>top;i--){
+             matrix[i][right] = matrix[i-1][right];
+         }
+         for(int i = right;i>left;i--){
+             matrix[top][i] = matrix[top][i-1];
+         }
+
+           matrix[top][left+1] = temp;
+
+         top++ , bot-- , left++ , right--;
+     }
+
+}
