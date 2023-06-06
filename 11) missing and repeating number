@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+
+     
+     unordered_map<int,int>mp;
+    int sum = 0;
+	 for(int i = 0;i<n;i++){
+		 mp[arr[i]]++;
+		 sum += arr[i];
+	 }
+    
+	   int x = 0 ;
+    
+	 for(auto it:mp){
+		 if(it.second>1){
+			 x = it.first;
+		 }
+	
+	 }
+
+
+	 return { n*(n+1)/2 + x - sum,x};
+
+
+// n*(n+1)/2 is the sum of first n numbers so substracting it from the 
+// arr[] and adding x and then substracting
+// sum will give the left over digit
+
+}
