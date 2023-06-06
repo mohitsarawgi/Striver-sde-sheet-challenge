@@ -1,0 +1,22 @@
+// T.C = O(n)
+// S.c = O(1)
+
+#include <bits/stdc++.h> 
+int maximumProfit(vector<int> &prices){
+    int profit = 0 , max_profit =  0 , lessprice = INT_MAX , n = prices.size();
+
+
+    for(int i = 0;i<n;i++){
+        if(lessprice>prices[i]){
+            lessprice = prices[i];
+        }
+        
+        profit =  prices[i] - lessprice;
+
+        max_profit = max(max_profit , profit);
+
+    }
+
+    return max_profit;
+
+}
