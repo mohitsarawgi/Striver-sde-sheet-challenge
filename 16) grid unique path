@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+
+int ans(int m , int n , int i , int j , vector<vector<int>>&dp){
+	
+
+	if(m==i || n==j) return 1;
+	if(dp[m][n]!=-1) return dp[m][n];
+
+	dp[m][n] = ans(m+1 , n , i , j , dp) + ans(m , n+1 , i , j , dp);
+	return dp[m][n];
+}
+
+
+int uniquePaths(int m, int n) {
+	vector<vector<int>>dp(m , vector<int>(n , -1));
+	return ans(0 , 0 , m-1 , n-1 , dp);
+}
