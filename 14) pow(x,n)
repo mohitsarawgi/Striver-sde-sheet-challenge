@@ -1,0 +1,28 @@
+// log2n
+
+
+class Solution {
+public:
+    double myPow(double x, int n) {
+         long long aa = n;
+      double ans = 1.0;
+
+    if(aa < 0) aa = -1*aa;
+    while(aa>0){
+        if(aa%2==1){
+           ans = ans*x;
+           aa = aa-1;;
+        }
+        else{
+            x = x*x;
+            aa = aa/2;
+        }
+    }
+
+    if(n<0){
+        ans = (double)1.0/double(ans);
+    }
+
+    return ans;
+    }
+};
