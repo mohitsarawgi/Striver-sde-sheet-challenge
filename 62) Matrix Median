@@ -1,0 +1,16 @@
+int getMedian(vector<vector<int>> &matrix)
+{
+    vector<int>vt;
+   
+    for(int i = 0;i<matrix.size();i++){
+        for(int j = 0;j<matrix[0].size();j++){
+            vt.push_back(matrix[i][j]);
+        }
+    }
+ 
+    sort(vt.begin() , vt.end());
+  
+    int mid = (vt.size())/2;
+
+    return vt[mid];
+}
