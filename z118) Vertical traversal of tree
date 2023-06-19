@@ -1,0 +1,38 @@
+vector<int> verticalOrderTraversal(TreeNode<int> *root)
+{
+    queue<pair<TreeNode<int>* , pair<int , int >>>todo;
+    map<int , map<int , vector<int>>>nodes;
+
+    todo.push({root , {0 , 0}});
+
+    while(!todo.empty()){
+        auto p = todo.front();
+        todo.pop();
+        TreeNode<int>*nod = p.first;
+        int x = p.second.first;
+        int y = p.second.second;
+
+        nodes[x][y].push_back(nod->data);
+
+        if(nod->left){
+            todo.push({nod->left , {x-1 , y+1}});
+        }
+        if(nod->right){
+            todo.push({nod->right , {x+1 , y+1}});
+        }
+
+    }
+
+
+   vector<int>ans;
+   for(auto i:nodes){
+       for(auto j:i.second){
+           for(auto k:j.second){
+               ans.push_back(k);
+           }
+       }
+   }
+
+    return ans;
+
+}
