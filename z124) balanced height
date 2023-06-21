@@ -1,0 +1,23 @@
+int solve(BinaryTreeNode<int>*root , int&mini){
+    if(root == NULL) return 0;
+
+    int l = solve(root->left , mini);
+    int r = solve(root->right , mini);
+
+    mini = max(mini , abs(r - l));
+    
+
+    return 1 + max(l , r);
+}
+
+bool isBalancedBT(BinaryTreeNode<int>* root) {
+    int mini = 0;
+solve(root , mini);
+
+if(mini<=1){
+    return true;
+}
+
+else{
+    return false;
+}
