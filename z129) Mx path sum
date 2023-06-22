@@ -1,0 +1,24 @@
+
+************************************************************/
+
+int solve(TreeNode<int>*root , long long int &maxi){
+    if(root == NULL) return 0;
+
+    long long int l =  solve(root->left  , maxi);
+    long long int r =  solve(root->right , maxi);
+
+    maxi = max(maxi , root->val + l + r);
+
+    return max(l , r) + root->val;
+}
+
+
+long long int findMaxSumPath(TreeNode<int> *root)
+{
+    long long int maxi = INT_MIN;
+    if(root == NULL || root->left == NULL || root->right==NULL)return -1;
+    solve(root , maxi);
+    return maxi;
+
+    
+}
