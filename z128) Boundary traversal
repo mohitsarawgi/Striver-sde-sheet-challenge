@@ -1,0 +1,50 @@
+bool isLeaf(TreeNode<int> *root) { 
+    return !root->left && !root->right;
+ }
+
+void addright(TreeNode<int>*root , vector<int>&ans){
+    TreeNode<int>*curr = root->right;
+    vector<int>temp;
+
+    while(curr){
+        if(!isLeaf(curr)) temp.push_back(curr->data);
+        if(curr->right) curr = curr->right;
+        else curr = curr->left;
+    }
+
+    for(int i = temp.size()-1 ; i>=0;--i){
+        ans.push_back(temp[i]);
+    }
+}
+
+void addleaf(TreeNode<int>*root , vector<int>&ans){
+    if(root->left) addleaf(root->left , ans);
+    if(isLeaf(root)) ans.push_back(root->data);
+    if(root->right) addleaf(root->right , ans);
+}
+
+void addleft(TreeNode<int>*root , vector<int>&ans){
+    TreeNode<int>*curr = root->left;
+    while(curr){
+        if(!isLeaf(curr)) ans.push_back(curr->data);
+        if(curr->left) curr = curr->left;
+        else curr = curr->right;
+    }
+}
+
+
+
+vector<int> traverseBoundary(TreeNode<int>* root){
+    vector<int>ans;
+    if(root == NULL) return ans;
+    
+    if(!isLeaf(root)) ans.push_back(root->data);
+
+    addleft(root , ans);
+    addleaf(root , ans);
+    addright(root , ans);
+
+    return ans;
+
+
+}
