@@ -1,0 +1,36 @@
+
+vector<int> zigZagTraversal(BinaryTreeNode<int> *root)
+{
+      vector<int>ans;
+     bool flag  = true;
+    queue<BinaryTreeNode<int>*>q;
+    if(root == NULL) return ans;
+   
+
+    q.push(root);
+
+    while(!q.empty()){
+        int n = q.size();
+        vector<int>temp(n);
+        for(int i = 0;i<n;i++){
+              BinaryTreeNode<int>*curr = q.front();
+              q.pop();
+            if(flag) temp[i] = curr->data;
+            else temp[n-i-1] = curr->data;
+
+            if(curr->left!=NULL) q.push(curr->left);
+            if(curr->right!=NULL) q.push(curr->right);
+        }
+
+        for(auto it:temp){
+            ans.push_back(it);
+        }
+        flag = !flag;
+
+        
+
+        
+    }
+
+    return ans;
+}
