@@ -1,0 +1,15 @@
+bool solve(BinaryTreeNode<int>* left ,BinaryTreeNode<int>* right){
+    if(right == NULL || left == NULL) return left == right;
+
+    if(left->data!=right->data) return false;
+
+    return solve(left->left , right->right) && solve(left->right , right->left);
+}
+
+
+bool isSymmetric(BinaryTreeNode<int>* root)
+{
+     if(root == NULL) return true;
+    return solve(root->left , root->right);
+       
+}
