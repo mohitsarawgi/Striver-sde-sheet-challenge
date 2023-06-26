@@ -1,0 +1,24 @@
+TreeNode<int>*flat(TreeNode<int>*root , TreeNode<int>*&prev){
+    
+    if(root == NULL) return NULL;
+
+    flat(root->right , prev);
+    flat(root->left , prev);
+
+    root->right = prev;
+    root->left = NULL;
+    prev =  root;
+
+    return root;
+    
+
+
+}
+
+
+TreeNode<int> *flattenBinaryTree(TreeNode<int> *root)
+{
+       TreeNode<int>*prev = NULL;
+      return flat(root , prev);
+   
+}
