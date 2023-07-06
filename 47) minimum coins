@@ -1,0 +1,18 @@
+int findMinimumCoins(int amount) 
+{
+    int arr[] = {1,2,5,10,20,50,100,500,1000};
+    int i = 8;
+    int coin = 0;
+
+    while(amount && i>=0){
+        if(arr[i]>amount){
+            i--;
+            continue;
+        }
+
+        coin++;
+        amount -= arr[i];
+    }
+
+    return coin;
+}
